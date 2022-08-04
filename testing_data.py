@@ -49,10 +49,10 @@ def count_ecs(full_list):
 ec_count = count_ecs(no_header)
 utilization_full = utilization(no_header)
 average = statistics.mean(utilization_full)
-print(ec_count)
-print(utilization_full)
+# print(ec_count)
+# print(utilization_full)
 print(average)
 
 
-# plt.scatter(ec_count, utilization_full)
-# plt.show()
+plt.scatter(ec_count, utilization_full)
+plt.show()
