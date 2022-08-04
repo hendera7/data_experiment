@@ -1,25 +1,55 @@
 import csv
-
+import matplotlib
+import matplotlib.pyplot as plt
 
 
 CSV_PATH = 'utilization.csv'
 
+
 def open_txt(file_path):
     data_list = []
     with open(file_path, 'r') as file_in:
-        for row in file_in:
-            reader = csv.reader(file_in, delimiter=",")
+        reader = csv.reader(file_in, delimiter=',')
+        for row in reader:
             data_list.append(row)
+    
     return data_list
 
-print(open_txt(CSV_PATH))
+new_list = open_txt(CSV_PATH)
+no_header = new_list[1:]
+print(no_header)
 
-def convert_data_to_dict(data):
-    info = {
-        "name": data [1],
-        "utilization": data [2]
-        }
-    return info
+def utilization(full_list):
+    utilization_total = []
+    for sub_list in full_list:
+        utilization_total.append(sub_list[3])
 
-def plot_utilization(dict):
-    pass
+    return utilization_total
+
+
+def count_ecs(full_list):
+    count_ecs = []
+    counter = 1
+    for sub_list in full_list:
+        count_ecs.append(counter)
+        counter += 1
+    
+    return count_ecs
+
+
+ec_count = count_ecs(no_header)
+utilization_full = utilization(no_header)
+
+
+def working_list(data_list):
+    new_list = []
+    for item in data_list:
+        new_list.append(int(item[0:2]))
+    
+    return new_list
+
+
+total_utlz_list = working_list(utilization_full)
+print(ec_count)
+print(total_utlz_list)
+
