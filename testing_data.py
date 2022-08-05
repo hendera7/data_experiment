@@ -45,7 +45,6 @@ def count_ecs(full_list):
     return count_ecs
 
 
-
 ec_count = count_ecs(no_header)
 utilization_full = utilization(no_header)
 average = statistics.mean(utilization_full)
